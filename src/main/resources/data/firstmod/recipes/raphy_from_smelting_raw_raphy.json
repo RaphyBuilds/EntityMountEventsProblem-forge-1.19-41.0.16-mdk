@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 220,
+  "experience": 1,
+  "group": "raphy",
+  "ingredient": {
+    "item": "firstmod:raw_raphy"
+  },
+  "result": "firstmod:raphy"
+}

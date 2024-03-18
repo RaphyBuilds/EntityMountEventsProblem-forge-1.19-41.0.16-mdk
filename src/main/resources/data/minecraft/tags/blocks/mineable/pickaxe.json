@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "firstmod:raphy_ore",
+    "firstmod:deepslate_raphy_ore",
+    "firstmod:raphy_block",
+    "firstmod:netherrack_raphy_ore",
+    "firstmod:endstone_raphy_ore"
+  ]
+}

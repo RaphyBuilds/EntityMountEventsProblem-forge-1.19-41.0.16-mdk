@@ -1,0 +1,14 @@
+@SubscribeEvent
+        public static void onEntityMountEvent(EntityMountEvent event) {
+            if (event.getEntity() instanceof Sheep) {
+                if (event.getEntityMounting() instanceof Player player) {
+                    if (event.getEntityBeingMounted() instanceof Sheep){
+                        if (!event.getLevel().isClientSide()) {
+
+
+                        }
+                    }
+                }
+
+            }
+        }

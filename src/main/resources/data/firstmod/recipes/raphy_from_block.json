@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "raphy",
+  "ingredients": [
+    {
+      "item": "firstmod:raphy_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "firstmod:raphy"
+  }
+}
