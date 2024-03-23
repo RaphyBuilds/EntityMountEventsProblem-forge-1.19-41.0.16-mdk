@@ -10,9 +10,9 @@ import net.minecraft.world.entity.animal.Pig;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.DismountHelper;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
@@ -73,6 +73,14 @@ import org.jline.utils.ShutdownHooks;
 import java.util.function.Consumer;
 import java.util.logging.Handler;
 
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+
+
+
+
+import net.minecraftforge.eventbus.api.EventPriority;
 
 
 public class ModEvents {
@@ -94,23 +102,29 @@ public class ModEvents {
         }
 
 
+        public static class SaddleItem extends Item {
+            public SaddleItem(Item.Properties properties) {
+                super(properties);
+            }
 
-            @SubscribeEvent
-            public static void onSheepMount(EntityMountEvent event) {
-                Entity entityBeingMounted = event.getEntityBeingMounted();
-                Entity entityMounting = event.getEntityMounting();
-                Level level = event.getLevel();
-
-                if (entityBeingMounted instanceof Sheep && entityMounting instanceof Player) {
-                    if (!event.getLevel().isClientSide()) {
-                        if (!event.isCanceled() && event.isMounting()) {
-                            // Perform your actions here when a player mounts a sheep
-                            System.out.println("Player mounted a sheep!");
+            @SubscribeEvent(priority = EventPriority.NORMAL)
+            public static void onRightClickEntity(PlayerInteractEvent.EntityInteract event) {
+                if (!event.getLevel().isClientSide()) {
+                    if (event.getTarget() instanceof Saddleable saddleable && saddleable instanceof LivingEntity) {
+                        ItemStack heldItem = event.getEntity().getItemInHand(event.getHand());
+                        if (heldItem.getItem() == Items.SADDLE) {
+                            saddleable.equipSaddle(SoundSource.NEUTRAL);
+                            event.getTarget().level.gameEvent(event.getTarget(), GameEvent.EQUIP, event.getTarget().position());
+                            heldItem.shrink(1);
+                            event.setCancellationResult(InteractionResult.SUCCESS);
                         }
                     }
                 }
-
+            }
         }
+
+
+    }
         @Mod.EventBusSubscriber(modid = FirstMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
         public static class ModEventBusEvents {
             @SubscribeEvent
@@ -118,8 +132,10 @@ public class ModEvents {
                 event.put(ModEntityTypes.RARY.get(), RaryEntity.setAttributes());
             }
         }
-    }
+
 }
+
+
 
 
 
