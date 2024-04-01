@@ -9,6 +9,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.raphybuilds.firstmod.FirstMod;
 import net.raphybuilds.firstmod.entity.custom.RaryEntity;
+import net.raphybuilds.firstmod.entity.custom.DragonEntity;
 
 public class ModEntityTypes {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
@@ -18,6 +19,13 @@ public class ModEntityTypes {
             ()->EntityType.Builder.of(RaryEntity::new, MobCategory.MONSTER)
                     .sized(0.4f, 1.5f)
             .build(new ResourceLocation(FirstMod.MOD_ID, "rary").toString()));
+
+    public static final RegistryObject<EntityType<DragonEntity>> DRAGON =
+            ENTITY_TYPES.register("dragon",
+                    ()->EntityType.Builder.of(DragonEntity::new, MobCategory.CREATURE)
+                            .sized(0.4f, 1.5f)
+                            .build(new ResourceLocation(FirstMod.MOD_ID, "dragon").toString()));
+
     public static void register(IEventBus eventBus){
         ENTITY_TYPES.register(eventBus);
     }

@@ -1,4 +1,4 @@
-package net.raphybuilds.firstmod.entity.client;
+package net.raphybuilds.firstmod.entity.client.Renderer;
 
 
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -8,9 +8,9 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.raphybuilds.firstmod.FirstMod;
+import net.raphybuilds.firstmod.entity.client.Model.RaryModel;
 import net.raphybuilds.firstmod.entity.custom.RaryEntity;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 public class RaryRenderer extends GeoEntityRenderer<RaryEntity> {

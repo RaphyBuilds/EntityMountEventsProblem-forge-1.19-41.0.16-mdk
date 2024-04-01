@@ -1,4 +1,4 @@
-package net.raphybuilds.firstmod.entity.client;
+package net.raphybuilds.firstmod.entity.client.Model;
 
 import net.minecraft.resources.ResourceLocation;
 import net.raphybuilds.firstmod.FirstMod;

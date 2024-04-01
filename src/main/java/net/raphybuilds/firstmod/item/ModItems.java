@@ -3,7 +3,6 @@ package net.raphybuilds.firstmod.item;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.Tiers;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -26,6 +25,10 @@ public static final RegistryObject<Item> RAPHYSWORD = ITEMS.register("raphysword
 public static final RegistryObject<Item> RARY_SPAWN_EGG = ITEMS.register("rary_spawn_egg",
         () -> new ForgeSpawnEggItem(ModEntityTypes.RARY, 0x22b341, 0x19732e,
                 new Item.Properties().tab(ModCreativeModeTab.FIRSTMOD_TAB)));
+
+    public static final RegistryObject<Item> DRAGON_SPAWN_EGG = ITEMS.register("dragon_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntityTypes.DRAGON, 0x20b330, 0x19622e,
+                    new Item.Properties().tab(ModCreativeModeTab.FIRSTMOD_TAB)));
     public static final RegistryObject<Item> RAPHY_PICKAXE = ITEMS.register("raphy_pickaxe",
             () -> new PickaxeItem(ModToolTiers.RAPHY, 2, 3f,
                     new Item.Properties().tab(ModCreativeModeTab.FIRSTMOD_TAB).stacksTo(1)));

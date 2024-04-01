@@ -1,0 +1,20 @@
+public static class SaddleItem extends Item {
+            public SaddleItem(Item.Properties properties) {
+                super(properties);
+            }
+
+            @SubscribeEvent(priority = EventPriority.NORMAL)
+            public static void onRightClickEntity(PlayerInteractEvent.EntityInteract event) {
+                if (!event.getLevel().isClientSide()) {
+                    if (event.getTarget() instanceof Saddleable saddleable && saddleable instanceof LivingEntity) {
+                        ItemStack heldItem = event.getEntity().getItemInHand(event.getHand());
+                        if (heldItem.getItem() == Items.SADDLE) {
+                            saddleable.equipSaddle(SoundSource.NEUTRAL);
+                            event.getTarget().level.gameEvent(event.getTarget(), GameEvent.EQUIP, event.getTarget().position());
+                            heldItem.shrink(1);
+                            event.setCancellationResult(InteractionResult.SUCCESS);
+                        }
+                    }
+                }
+            }
+        }

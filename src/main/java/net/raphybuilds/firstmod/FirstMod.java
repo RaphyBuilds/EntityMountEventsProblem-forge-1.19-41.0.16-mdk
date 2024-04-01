@@ -11,7 +11,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.raphybuilds.firstmod.block.ModBlocks;
 import net.raphybuilds.firstmod.entity.ModEntityTypes;
-import net.raphybuilds.firstmod.entity.client.RaryRenderer;
+import net.raphybuilds.firstmod.entity.client.Renderer.DragonRenderer;
+import net.raphybuilds.firstmod.entity.client.Renderer.RaryRenderer;
 import net.raphybuilds.firstmod.item.ModItems;
 import net.raphybuilds.firstmod.world.feature.ModConfiguredFeatures;
 import net.raphybuilds.firstmod.world.feature.ModPlacedFeatures;
@@ -50,6 +51,7 @@ public class FirstMod {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(ModEntityTypes.RARY.get(), RaryRenderer::new);
+            EntityRenderers.register(ModEntityTypes.DRAGON.get(), DragonRenderer::new);
 
         }
     }
